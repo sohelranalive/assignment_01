@@ -33,3 +33,46 @@ class Person {
     return `'Name: ${this.name}, Age: ${this.age}'`;
   }
 }
+
+type BooksArray = {
+  title: string;
+  rating: number;
+};
+
+const filterByRating = (userInput: BooksArray[]): BooksArray[] => {
+  const filteredArray = userInput
+    .filter((entry) => entry.rating >= 4)
+    .map((book) => book);
+
+  return filteredArray;
+};
+
+type usersArray = {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
+};
+
+const filterActiveUsers = (userInput: usersArray[]): usersArray[] => {
+  const filteredArray = userInput
+    .filter((entry) => entry.isActive)
+    .map((user) => user);
+
+  return filteredArray;
+};
+
+interface Book {
+  title: string;
+  author: string;
+  publishedYear: number;
+  isAvailable: boolean;
+}
+
+const printBookDetails = (bookInfo: Book) => {
+  console.log(
+    `Title: ${bookInfo.title}, Author: ${bookInfo.author}, Published: ${
+      bookInfo.publishedYear
+    }, Available: ${bookInfo.isAvailable ? "Yes" : "No"}`
+  );
+};
