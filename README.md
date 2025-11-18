@@ -1,4 +1,4 @@
-# 2. What is the use of the keyof keyword in TypeScript? Provide an example.
+## 2. What is the use of the keyof keyword in TypeScript? Provide an example.
 
 টাইপস্ক্রিপ্টে আমরা যখন টাইপ ডিক্লেয়ার করি তখন এইগুলা মুলত key এবং value জোড়া হিসেবে থাকে। keyof keyword দিয়ে আমরা সেই সব key গুলো এক্সেস করতে পারি। ধরি আমাদের একটা অবজেক্ট আছে।
 
