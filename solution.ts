@@ -76,3 +76,59 @@ const printBookDetails = (bookInfo: Book) => {
     }, Available: ${bookInfo.isAvailable ? "Yes" : "No"}`
   );
 };
+
+const getUniqueValues = <T extends string | number>(
+  array1: T[],
+  array2: T[]
+) => {
+  const combniedArray: T[] = [];
+
+  for (let i = 0; i < array1.length; i++) {
+    combniedArray[combniedArray.length] = array1[i];
+  }
+  for (let i = 0; i < array2.length; i++) {
+    combniedArray[combniedArray.length] = array2[i];
+  }
+
+  let newArray: T[] = [];
+
+  for (let i = 0; i < combniedArray.length; i++) {
+    let tempValue = combniedArray[i];
+    let isExists = false;
+    for (let j = 0; j < array2.length; j++) {
+      if (newArray[j] === tempValue) {
+        isExists = true;
+        break;
+      }
+    }
+    if (!isExists) {
+      newArray[newArray.length] = tempValue;
+    }
+  }
+
+  return newArray;
+};
+
+type Product = {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+};
+
+const calculateTotalPrice = (productInfo: Product[]): number => {
+  const totalPrice = productInfo.reduce((subTotal, product) => {
+    const discount = product.discount
+      ? product.discount < 100 && product.discount > 0
+        ? product.discount
+        : 0
+      : 0;
+    const discountAmount =
+      product.price * product.quantity -
+      (product.price * product.quantity * discount) / 100;
+
+    return subTotal + discountAmount;
+  }, 0);
+
+  return totalPrice;
+};
